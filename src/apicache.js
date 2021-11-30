@@ -46,6 +46,11 @@ function ApiCache() {
     jsonp: false,
     redisClient: false,
     headerBlacklist: [],
+    cacheRouteList:[],
+    method:{
+      include: [],
+      exclude:[]
+    },
     statusCodes: {
       include: [],
       exclude: [],
@@ -76,6 +81,21 @@ function ApiCache() {
     var debugEnv = process.env.DEBUG && process.env.DEBUG.split(',').indexOf('apicache') !== -1
 
     return (globalOptions.debug || debugEnv) && console.log.apply(null, arr)
+  }
+
+  function shouldCacheRoute(request){
+    if(globalOptions.cacheRouteList.length && globalOptions.cacheRouteList.indexOf(request.route.path)===-1) return false;
+    return true;
+  }
+
+  function shouldCacheMethod(request){
+    if(!request) return false;
+
+    if(globalOptions.method.exclude.length && globalOptions.method.exclude.indexOf(request.method)!==-1) return false;
+
+    if(globalOptions.method.include.length && globalOptions.method.include.indexOf(request.method)===-1) return false;
+
+    return true;
   }
 
   function shouldCacheResponse(request, response, toggle) {
@@ -194,7 +214,7 @@ function ApiCache() {
     res.writeHead = function() {
       // add cache control headers
       if (!globalOptions.headers['cache-control']) {
-        if (shouldCacheResponse(req, res, toggle)) {
+        if (shouldCacheResponse(req, res, toggle) && shouldCacheMethod(req) && shouldCacheRoute(req)) {
           res.setHeader('cache-control', 'max-age=' + (duration / 1000).toFixed(0))
         } else {
           res.setHeader('cache-control', 'no-cache, no-store, must-revalidate')
@@ -213,7 +233,7 @@ function ApiCache() {
 
     // patch res.end
     res.end = function(content, encoding) {
-      if (shouldCacheResponse(req, res, toggle)) {
+      if (shouldCacheResponse(req, res, toggle) && shouldCacheMethod(req) && shouldCacheRoute(req)) {
         accumulateContent(res, content)
 
         if (res._apicache.cacheable && res._apicache.content) {
