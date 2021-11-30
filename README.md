@@ -150,6 +150,11 @@ let cache5min = cache('5 minute') // continue to use normally
   redisClient:      client,         // if provided, uses the [node-redis](https://github.com/NodeRedis/node_redis) client instead of [memory-cache](https://github.com/ptarjan/node-cache)
   appendKey:        fn(req, res),   // appendKey takes the req/res objects and returns a custom value to extend the cache key
   headerBlacklist:  [],             // list of headers that should never be cached
+  cacheRouteList:[],                // list of route will be cached
+  method:{
+    include: [],                    // list of method will be cached (e.g. ["GET"])
+    exclude:[]                      // list of method will be excluded (e.g. ["POST","PUT","DELETE"])
+  },
   statusCodes: {
     exclude:        [],             // list status codes to specifically exclude (e.g. [404, 403] cache all responses unless they had a 404 or 403 status)
     include:        [],             // list status codes to require (e.g. [200] caches ONLY responses with a success/200 code)
