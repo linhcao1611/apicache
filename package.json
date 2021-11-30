@@ -1,5 +1,5 @@
 {
-  "name": "apicache",
+  "name": "apicache-plus",
   "version": "1.7.0",
   "scripts": {
     "lint": "eslint .",
