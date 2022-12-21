@@ -84,8 +84,11 @@ function ApiCache() {
   }
 
   function shouldCacheRoute(request) {
+    console.log('shouldCacheRoute...')
+    console.log('globalOptions.cacheRouteList: ', globalOptions.cacheRouteList)
     if (!request) return false
     if (!request.route) return false
+    console.log('api cache route path: ', request.route.path)
     if (
       globalOptions.cacheRouteList.length &&
       globalOptions.cacheRouteList.indexOf(request.route.path) === -1
