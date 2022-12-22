@@ -95,6 +95,11 @@ function ApiCache() {
   }
 
   function shouldCacheMethod(request) {
+    console.log('shouldCacheMethod', request.method)
+    console.log('globalOptions.method.exclude.length', globalOptions.method.exclude.length)
+    console.log('globalOptions.method.include.length: ', globalOptions.method.include.length)
+    console.log('globalOptions.method.exclude: ', globalOptions.method.exclude)
+    console.log('globalOptions.method.include: ', globalOptions.method.include)
     if (!request) return false
 
     if (
