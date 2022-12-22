@@ -649,7 +649,8 @@ function ApiCache() {
       if (
         req.headers['x-apicache-bypass'] ||
         req.headers['x-apicache-force-fetch'] ||
-        (opt.respectCacheControl && req.headers['cache-control'] == 'no-cache')
+        (opt.respectCacheControl && req.headers['cache-control'] == 'no-cache') ||
+        !shouldCacheMethod(req)
       )
         return bypass()
 
