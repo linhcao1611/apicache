@@ -96,15 +96,11 @@ function ApiCache() {
   }
 
   function shouldRespectCacheControl(request) {
-    console.log('shouldRespectCacheControl...')
-    console.log('request.route: ', request.route)
-    console.log('globalOptions.noCacheControlRouteList: ', globalOptions.noCacheControlRouteList)
     if (!request) return false
-    if (!request.route) return false
-    console.log('request.route.path: ', request.route.path)
+    if (!request._parsedUrl) return false
     if (
       globalOptions.noCacheControlRouteList.length &&
-      globalOptions.noCacheControlRouteList.indexOf(request.route.path) !== -1
+      globalOptions.noCacheControlRouteList.indexOf(request._parsedUrl.pathname) !== -1
     )
       return true
     return false
