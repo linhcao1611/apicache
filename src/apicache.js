@@ -304,15 +304,22 @@ function ApiCache() {
 
     var headers = getSafeHeaders(response)
 
-    Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
-      // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
-      'cache-control':
-        'max-age=' +
-        Math.max(
-          0,
-          (duration / 1000 - (new Date().getTime() / 1000 - cacheObject.timestamp)).toFixed(0)
-        ),
-    })
+    if (shouldRespectCacheControl(request)) {
+      Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
+        // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
+        'cache-control': 'no-cache, no-store, must-revalidate',
+      })
+    } else {
+      Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
+        // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
+        'cache-control':
+          'max-age=' +
+          Math.max(
+            0,
+            (duration / 1000 - (new Date().getTime() / 1000 - cacheObject.timestamp)).toFixed(0)
+          ),
+      })
+    }
 
     // only embed apicache headers when not in production environment
     if (process.env.NODE_ENV !== 'production') {
