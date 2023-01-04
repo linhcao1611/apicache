@@ -96,6 +96,9 @@ function ApiCache() {
   }
 
   function shouldRespectCacheControl(request) {
+    console.log('shouldRespectCacheControl...')
+    console.log('request.route.path: ', request.route.path)
+    console.log('globalOptions.noCacheControlRouteList: ', globalOptions.noCacheControlRouteList)
     if (!request) return false
     if (!request.route) return false
     if (
@@ -306,7 +309,6 @@ function ApiCache() {
 
     if (shouldRespectCacheControl(request)) {
       Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
-        // set properly-decremented max-age header.  This ensures that max-age is in sync with the cache expiration.
         'cache-control': 'no-cache, no-store, must-revalidate',
       })
     } else {
