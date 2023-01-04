@@ -1,6 +1,6 @@
 {
   "name": "apicache-extra",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
