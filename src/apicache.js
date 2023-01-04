@@ -47,6 +47,7 @@ function ApiCache() {
     redisClient: false,
     headerBlacklist: [],
     cacheRouteList: [],
+    noCacheControlRouteList: [],
     method: {
       include: [],
       exclude: [],
@@ -92,6 +93,17 @@ function ApiCache() {
     )
       return false
     return true
+  }
+
+  function shouldRespectCacheControl(request) {
+    if (!request) return false
+    if (!request.route) return false
+    if (
+      globalOptions.noCacheControlRouteList.length &&
+      globalOptions.noCacheControlRouteList.indexOf(request.route.path) !== -1
+    )
+      return true
+    return false
   }
 
   function shouldCacheMethod(request) {
@@ -231,7 +243,8 @@ function ApiCache() {
         if (
           shouldCacheResponse(req, res, toggle) &&
           shouldCacheMethod(req) &&
-          shouldCacheRoute(req)
+          shouldCacheRoute(req) &&
+          !shouldRespectCacheControl(req)
         ) {
           res.setHeader('cache-control', 'max-age=' + (duration / 1000).toFixed(0))
         } else {

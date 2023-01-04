@@ -246,6 +246,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -265,6 +266,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -308,6 +310,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -329,6 +332,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -367,6 +371,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -386,6 +391,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -433,6 +439,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
@@ -454,6 +461,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         redisClient: false,
         headerBlacklist: [],
         cacheRouteList: [],
+        noCacheControlRouteList: [],
         method: {
           include: [],
           exclude: [],
