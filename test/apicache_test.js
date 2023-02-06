@@ -247,6 +247,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -267,6 +268,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -311,6 +313,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -333,6 +336,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -372,6 +376,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -392,6 +397,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -440,6 +446,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],
@@ -462,6 +469,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         headerBlacklist: [],
         cacheRouteList: [],
         noCacheControlRouteList: [],
+        preventBrowserCache: false,
         method: {
           include: [],
           exclude: [],

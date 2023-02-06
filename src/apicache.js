@@ -48,6 +48,7 @@ function ApiCache() {
     headerBlacklist: [],
     cacheRouteList: [],
     noCacheControlRouteList: [],
+    preventBrowserCache: false,
     method: {
       include: [],
       exclude: [],
@@ -244,7 +245,8 @@ function ApiCache() {
           shouldCacheResponse(req, res, toggle) &&
           shouldCacheMethod(req) &&
           shouldCacheRoute(req) &&
-          !shouldRespectCacheControl(req)
+          !shouldRespectCacheControl(req) &&
+          !globalOptions.preventBrowserCache
         ) {
           res.setHeader('cache-control', 'max-age=' + (duration / 1000).toFixed(0))
         } else {
@@ -304,7 +306,7 @@ function ApiCache() {
 
     var headers = getSafeHeaders(response)
 
-    if (shouldRespectCacheControl(request)) {
+    if (shouldRespectCacheControl(request) || globalOptions.preventBrowserCache) {
       Object.assign(headers, filterBlacklistedHeaders(cacheObject.headers || {}), {
         'cache-control': 'no-cache, no-store, must-revalidate',
       })
