@@ -287,9 +287,9 @@ function ApiCache() {
           // display log entry
           var elapsed = new Date() - req.apicacheTimer
           debug('adding cache entry for "' + key + '" @ ' + strDuration, logDuration(elapsed))
-          debug('_apicache.headers: ', res._apicache.headers)
-          debug('res.getHeaders(): ', getSafeHeaders(res))
-          debug('cacheObject: ', cacheObject)
+          // debug('_apicache.headers: ', res._apicache.headers)
+          // debug('res.getHeaders(): ', getSafeHeaders(res))
+          // debug('cacheObject: ', cacheObject)
         }
       }
 
