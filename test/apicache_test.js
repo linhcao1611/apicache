@@ -248,6 +248,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -269,6 +270,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -314,6 +316,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -337,6 +340,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -377,6 +381,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -398,6 +403,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -447,6 +453,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],
@@ -470,6 +477,7 @@ describe('.middleware {MIDDLEWARE}', function() {
         cacheRouteList: [],
         noCacheControlRouteList: [],
         preventBrowserCache: false,
+        preventHeaderOverwriteList: null,
         method: {
           include: [],
           exclude: [],

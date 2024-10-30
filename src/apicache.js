@@ -49,6 +49,7 @@ function ApiCache() {
     cacheRouteList: [],
     noCacheControlRouteList: [],
     preventBrowserCache: false,
+    preventHeaderOverwriteList: null,
     method: {
       include: [],
       exclude: [],
@@ -223,7 +224,23 @@ function ApiCache() {
     }
   }
 
+  function shouldByPassHeaderOverwrite(request) {
+    // Check if preventHeaderOverwriteList is defined and is an array
+    if (!Array.isArray(globalOptions.preventHeaderOverwriteList)) return false
+    // Check if request and request.url exist
+    if (!request || !request.url) return false
+
+    // Use the list to check if the URL should bypass header overwrite
+    return globalOptions.preventHeaderOverwriteList.some(function(path) {
+      return request.url.startsWith(path)
+    })
+  }
+
   function makeResponseCacheable(req, res, next, key, duration, strDuration, toggle) {
+    var shouldBypassHeaderOverwriteThisRequest = shouldByPassHeaderOverwrite(req)
+    if (shouldBypassHeaderOverwriteThisRequest) {
+      next() // Add return statement
+    }
     // monkeypatch res.end to create cache object
     res._apicache = {
       write: res.write,
