@@ -244,7 +244,8 @@ function ApiCache() {
   function makeResponseCacheable(req, res, next, key, duration, strDuration, toggle) {
     var shouldBypassHeaderOverwriteThisRequest = shouldByPassHeaderOverwrite(req)
     if (shouldBypassHeaderOverwriteThisRequest) {
-      next() // Add return statement
+      console.log('Bypassing header overwrite for this request: ', req.url)
+      return next() // Add return statement
     }
     // monkeypatch res.end to create cache object
     res._apicache = {
