@@ -225,15 +225,20 @@ function ApiCache() {
   }
 
   function shouldByPassHeaderOverwrite(request) {
-    // Check if preventHeaderOverwriteList is defined and is an array
-    if (!Array.isArray(globalOptions.preventHeaderOverwriteList)) return false
-    // Check if request and request.url exist
-    if (!request || !request.url) return false
+    try {
+      // Check if preventHeaderOverwriteList is defined and is an array
+      if (!Array.isArray(globalOptions.preventHeaderOverwriteList)) return false
+      // Check if request and request.url exist
+      if (!request || !request.url) return false
 
-    // Use the list to check if the URL should bypass header overwrite
-    return globalOptions.preventHeaderOverwriteList.some(function(path) {
-      return request.url.startsWith(path)
-    })
+      // Use the list to check if the URL should bypass header overwrite
+      return globalOptions.preventHeaderOverwriteList.some(function(path) {
+        return request.url.startsWith(path)
+      })
+    } catch (error) {
+      console.error('Error in shouldByPassHeaderOverwrite', error)
+      return false
+    }
   }
 
   function makeResponseCacheable(req, res, next, key, duration, strDuration, toggle) {
